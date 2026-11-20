@@ -1,0 +1,20 @@
+name: GitOps Infra Apply
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  apply:
+    if: github.event.pull_request.merged == true
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Simulate Infra Apply
+        run: |
+          echo "Infrastructure changes applied"
